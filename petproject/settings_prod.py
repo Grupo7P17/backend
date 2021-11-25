@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)a62e$09-))z0hh+mo-#i2@owto5($3-0w+8%^@07vtz3zplc$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost']
 
@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'petapp',
+    'drf_spectacular',
 ]
+SWAGGER_SETTINGS ={
+    'DOC_EXPANSION': 'None'
+}
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME'   : timedelta(minutes=5),
@@ -70,7 +74,8 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 AUTH_USER_MODEL = 'petapp.User'
@@ -101,10 +106,10 @@ WSGI_APPLICATION = 'petproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd1f1ak76jb36qu',
-        'USER': 'zkqofzjctnpxtz',
-        'PASSWORD': '0752f8e09e7746461d040b7383e47cfb0bee0fd2743b2190ddcd2f102fa25ecf',
-        'HOST': 'ec2-3-212-194-162.compute-1.amazonaws.com',
+        'NAME': 'da2vtdodulheb9',
+        'USER': 'gjtuhvkjntpgay',
+        'PASSWORD': '2a6809cbd9839fcc1ccc44fca8af242b52e2a9bca2bef516bd792e7c4b2865ec',
+        'HOST': 'ec2-3-209-38-221.compute-1.amazonaws.com',
         'PORT': '5432',
 }
 }
@@ -154,3 +159,10 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import django_heroku
 django_heroku.settings(locals())
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'PetClubHouse',
+    'DESCRIPTION': 'Documentación del microservicio de autenticación PetClubHouse',
+    'VERSION': '1.0.0',
+    # OTHER SETTINGS
+}

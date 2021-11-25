@@ -7,6 +7,9 @@ from rest_framework_simplejwt.exceptions  import TokenError, InvalidToken
 from rest_framework_simplejwt.serializers import TokenVerifySerializer
 
 class VerifyTokenView(TokenVerifyView):
+    """
+    verificar Token
+    """
     def post(self, request, *args, **kwargs):
         serializer    = TokenVerifySerializer(data=request.data)
         token_backend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
