@@ -1,2 +1,2 @@
 # backend
-Microservicio de autenticación de PetClubHouse
+Repositorio de microservicio de autenticación como API RESTful, usando DjangoRestFramework y PostgreSQL
